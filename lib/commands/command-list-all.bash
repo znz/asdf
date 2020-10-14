@@ -1,8 +1,9 @@
 # -*- sh -*-
+set -o nounset
 
 list_all_command() {
-  local plugin_name=$1
-  local query=$2
+  local plugin_name=${1:-}
+  local query=${2:-}
   local plugin_path
   local std_out_file
   local std_err_file
