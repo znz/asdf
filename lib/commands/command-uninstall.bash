@@ -6,7 +6,7 @@ set -o nounset
 
 uninstall_command() {
   local plugin_name=${1:-}
-  local full_version=$2
+  local full_version=${2:-}
   local plugin_path
   plugin_path=$(get_plugin_path "$plugin_name")
 
@@ -48,7 +48,7 @@ uninstall_command() {
 
 remove_shims_for_version() {
   local plugin_name=${1:-}
-  local full_version=$2
+  local full_version=${2:-}
   for shim_path in $(plugin_shims "$plugin_name" "$full_version"); do
     remove_shim_for_version "$plugin_name" "$full_version" "$shim_path"
   done

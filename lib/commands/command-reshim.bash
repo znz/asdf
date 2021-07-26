@@ -57,8 +57,8 @@ ensure_shims_dir() {
 
 write_shim_script() {
   local plugin_name=${1:-}
-  local version=$2
-  local executable_path=$3
+  local version=${2:-}
+  local executable_path=${3:-}
 
   if ! is_executable "$executable_path"; then
     return 0
@@ -88,7 +88,7 @@ EOF
 
 generate_shim_for_executable() {
   local plugin_name=${1:-}
-  local executable=$2
+  local executable=${2:-}
 
   check_if_plugin_exists "$plugin_name"
 
@@ -105,7 +105,7 @@ generate_shim_for_executable() {
 
 generate_shims_for_version() {
   local plugin_name=${1:-}
-  local full_version=$2
+  local full_version=${2:-}
   local all_executable_paths
   IFS=$'\n' read -rd '' -a all_executable_paths <<<"$(plugin_executables "$plugin_name" "$full_version")"
   for executable_path in "${all_executable_paths[@]}"; do
@@ -115,7 +115,7 @@ generate_shims_for_version() {
 
 remove_obsolete_shims() {
   local plugin_name=${1:-}
-  local full_version=$2
+  local full_version=${2:-}
 
   local shims
   shims=$(plugin_shims "$plugin_name" "$full_version" | xargs -IX basename X | sort)

@@ -1,7 +1,7 @@
 # -*- sh -*-
 
 plugin_push_command() {
-  local plugin_name=$1
+  local plugin_name=${1:-}
   if [ "$plugin_name" = "--all" ]; then
     for dir in "$(asdf_data_dir)"/plugins/*; do
       printf "Pushing %s...\\n" "$(basename "$dir")"

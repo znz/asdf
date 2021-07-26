@@ -1,7 +1,7 @@
 # The asdf function is a wrapper so we can export variables
 asdf() {
   local command
-  command="$1"
+  command="${1:-}"
   if [ "$#" -gt 0 ]; then
     shift
   fi

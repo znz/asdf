@@ -13,7 +13,7 @@ shell_command() {
   fi
 
   local plugin=${1:-}
-  local version=$2
+  local version=${2:-}
 
   local upcase_name
   upcase_name=$(tr '[:lower:]-' '[:upper:]_' <<<"$plugin")

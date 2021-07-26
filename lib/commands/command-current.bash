@@ -27,7 +27,7 @@ plugin_current_command() {
   done
   check_for_deprecated_plugin "$plugin_name"
 
-  if [ -n "$version_not_installed" ]; then
+  if [ -n "${version_not_installed:-}" ]; then
     description="Not installed. Run \"asdf install $plugin $version\""
     printf "$terminal_format" "$plugin" "$version" "$description" 1>&2
     return 1
